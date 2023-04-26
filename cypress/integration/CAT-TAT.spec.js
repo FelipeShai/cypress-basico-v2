@@ -111,10 +111,20 @@ describe('Central de Atendimento ao Cliente TAT', function() {
         cy.get('input[type="radio"]').should('have.length', 3).each(function($radio) {
             cy.wrap($radio).check().should('be.checked')
         })
-        cy.get('input[type="radio"][value="elogio"]').check().should('be.checked')
-        cy.get('input[type="radio"]').check('feedback').should('have.value', 'feedback')
-        cy.get('button[type="submit"]').click()
-        cy.get('.success').should('be.visible','Mensagem enviada com sucesso.')
+
+        cy.get('input[type="radio"][value="elogio"]')
+        .check()
+        .should('be.checked')
+
+        cy.get('input[type="radio"]')
+        .check('feedback')
+        .should('have.value', 'feedback')
+
+        cy.get('button[type="submit"]')
+        .click()
+
+        cy.get('.success')
+        .should('be.visible','Mensagem enviada com sucesso.')
     })
 
     it('marca ambos checkboxes, depois desmarca o último', () => {
